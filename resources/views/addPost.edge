@@ -1,0 +1,62 @@
+@layout('layouts/main')
+@set('title', 'Hulkapps Demo')
+
+
+@section('body')
+
+@!component('components/nav')
+
+<div class="bg-white mt-2">
+    <div class="max-w-7xl mx-auto py-16 px-4 ">
+      <div class="text-center">
+        <h2 class="text-base font-semibold text-indigo-600 tracking-wide uppercase animate-bounce">hulkapps</h2>
+        <p class="mt-1 text-5xl font-extrabold text-gray-900 ">Add post.</p>        
+      </div>
+    </div>  
+  </div>
+
+<div class="max-w-xl mx-auto px-4 sm:px-8 lg:px-8" >
+    
+    <div class="bg-white shadow drop-shadow-2xl overflow-hidden rounded-2xl col-span-1 my-10 pb-6 hover:bg-gray-50">
+      <ul role="list" class="divide-y divide-gray-200">
+        
+          <li>
+            
+            <form href="{{ route('PostsController.create') }}" method="POST" class="flex items-center px-4 py-4 sm:px-6">
+              <div class="min-w-0 flex-1 flex items-center">                                  
+                <div class="min-w-0 flex-1 px-4 pt-2">
+                  <div>
+                    <input type="hidden" name="author" value={{ auth.user.id }}>
+                    <p class="text-md font-bold text-gray-900 mb-4 uppercase">Add new post</p>
+                    <div class="col-span-6 sm:col-span-3">
+                      <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+                      <input type="text" name="title" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        @if(flashMessages.has('errors.title'))
+                          <p class="block text-xs font-base text-red-500 col-span-6 sm:col-span-3 mt-2"> {{ flashMessages.get('errors.title')}}
+                          </p>
+                        @endif 
+                    </div>
+                    <div class="col-span-6 sm:col-span-3 pt-2">
+                        <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                        <textarea type="text" name="description" placeholder="Tell me more... " class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                        @if(flashMessages.has('errors.description'))
+                          <p class="block text-xs font-base text-red-500 col-span-6 sm:col-span-3 mt-2"> {{ flashMessages.get('errors.description')}}
+                          </p>
+                        @endif 
+                      </div>                   
+                  </div>                
+                </div>
+              </div>
+              <button	type="submit" class="p-5 hover:bg-green-400 rounded-xl transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-100 duration-200" title="Add">
+                <!-- Heroicon name: solid/chevron-right -->              
+                <svg  viewBox="0 0 24 24" width="25" height="25"><path d="M22.319,4.431,8.5,18.249a1,1,0,0,1-1.417,0L1.739,12.9a1,1,0,0,0-1.417,0h0a1,1,0,0,0,0,1.417l5.346,5.345a3.008,3.008,0,0,0,4.25,0L23.736,5.847a1,1,0,0,0,0-1.416h0A1,1,0,0,0,22.319,4.431Z"/></svg>            
+              </button>
+            </form>
+          </a>
+        </li>  
+      </ul>
+    </div>        
+        
+</div>
+
+@endsection 

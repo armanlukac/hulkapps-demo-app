@@ -1,0 +1,105 @@
+@layout('layouts/main')
+@set('title', 'Hulkapps Demo')
+
+@section('body')
+
+@!component('components/nav')
+
+<div class="bg-white mt-2">
+  <div class="max-w-7xl mx-auto py-16 px-4 ">
+    <div class="text-center">
+      <h2 class="text-base font-semibold text-indigo-600 tracking-wide uppercase animate-bounce">hulkapps</h2>
+      <p class="mt-1 text-5xl font-extrabold text-gray-900 ">Posts.</p>
+      <p class="max-w-xl mt-5 mx-auto text-md text-gray-500">View all posts.</p>
+    </div>
+  </div>  
+</div>
+
+<div class="flex my-4 justify-center transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 duration-200">                    
+    <a href="{{route('PostsController.addPost')}}" class="shadow drop-shadow-xl inline-flex items-center p-2 border border-transparent rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">            
+        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        </svg>      
+    </a>
+</div>
+
+<div class="max-w-3xl mx-auto px-4 sm:px-8 lg:px-8 my-8" >
+    
+        <div class="rounded-2xl bg-gray-100 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px p-4">                                                     
+            
+          @each(post in posts)
+            <li class="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200 m-4 shadow drop-shadow-xl transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-100 duration-200">
+                <div class="flex-1 flex flex-col p-8">                                
+                                            
+                <a href="{{ route('PostsController.show', {id: post.id}) }}">
+                    <h3 class="text-gray-900 text-xl font-bold hover:text-indigo-500 tracking-wide mb-2">{{post.title}}</h3>
+                </a>                
+                <dl class="mt-4 flex-grow flex flex-col justify-between">
+                    <dd class="text-gray-500 text-xs">Posted by:</dd>                    
+                    <dd class="text-gray-700 text-sm font-semibold">{{post.author.username}}</dd>                                                                                                                           
+                </dl>
+                <dl class="mt-4 flex-grow flex flex-col justify-between">
+                  <dd class="text-gray-500 text-xs">Date</dd>                    
+                  <dd class="text-gray-700 text-sm font-semibold">
+                    {{ post.createdAt.toString().split('T')[0].split('-')[2]}}.
+                    {{ post.createdAt.toString().split('T')[0].split('-')[1]}}.
+                    {{ post.createdAt.toString().split('T')[0].split('-')[0]}}.
+                  </dd>                  
+                </dl>
+                <dl class="mt-4 flex-grow flex flex-col justify-between">
+                  <dd class="text-gray-500 text-xs">Comments</dd>                    
+                  <dd class="text-gray-700 text-sm font-semibold">{{post.commentCount}}</dd>                                                                                                                           
+                </dl> 
+                </div>                
+
+            </li>         
+          @endeach
+        </div>           
+  
+</div>
+
+<!-- PAGINATION -->
+
+<div class="grid grid-cols-1 place-items-center mb-2">
+    <ul class="inline-flex items-center">        
+
+        <li>
+          <form action="{{ route('PostsController.home2') }}">
+            <input type="hidden" name="page" value=1>
+            <button type="submit" class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-900 rounded-md">1 </button>
+          </form>
+        </li>
+
+        <li>
+          <form action="{{ route('PostsController.home2') }}">
+            <input type="hidden" name="page" value=3>
+            <button type="submit" class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-900 rounded-md">2 </button>
+          </form>
+        </li>
+
+        <li>
+          <form action="{{ route('PostsController.home2') }}">
+            <input type="hidden" name="page" value=5>
+            <button type="submit" class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-900 rounded-md">3 </button>
+          </form>
+        </li>
+
+        <li>
+          <form action="{{ route('PostsController.home2') }}">
+            <input type="hidden" name="page" value=7>
+            <button type="submit" class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-900 rounded-md">4 </button>
+          </form>
+        </li>
+
+        <li>
+          <form action="{{ route('PostsController.home2') }}">
+            <input type="hidden" name="page" value=9>
+            <button type="submit" class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-900 rounded-md">5 </button>
+          </form>
+        </li>
+                
+    </ul>  
+</div>
+@!component('components/footer')
+
+@endsection 
