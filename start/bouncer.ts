@@ -64,4 +64,4 @@ export const { actions } = Bouncer
 | NOTE: Always export the "policies" const from this file
 |****************************************************************
 */
-
+)
