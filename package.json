@@ -1,7 +1,6 @@
 {
-  "name": "f787_crm_app",
+  "name": "hulkapps_demo",
   "version": "1.0.0",
-  "type": "module",
   "private": true,
   "scripts": {
     "dev": "node ace serve --watch",
