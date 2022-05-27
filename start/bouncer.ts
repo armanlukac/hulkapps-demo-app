@@ -31,12 +31,13 @@ import Role from 'Contracts/enums/Role'
 |****************************************************************
 | NOTE: Always export the "actions" const from this file
 |****************************************************************
+*/
 
 export const { actions } = Bouncer
 .define('deletePost', (user: User, post: Post) => {
     return post.author === user.id
 }, 
-*/
+
 
 
 /*
