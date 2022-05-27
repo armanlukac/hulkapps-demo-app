@@ -1,3 +1,4 @@
+// @ts-ignore
 import Hash from '@ioc:Adonis/Core/Hash'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 

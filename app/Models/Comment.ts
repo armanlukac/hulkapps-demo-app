@@ -1,3 +1,4 @@
+// @ts-ignore
 import { DateTime } from 'luxon'
 import { BaseModel, BelongsTo, belongsTo, column,  } from '@ioc:Adonis/Lucid/Orm'
 import Post from './Post'

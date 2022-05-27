@@ -1,3 +1,4 @@
+// @ts-ignore
 /**
  * Contract source: https://git.io/Jte3T
  *
