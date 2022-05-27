@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-nocheck
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class IfGuest {

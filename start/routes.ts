@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-nocheck
 import Route from '@ioc:Adonis/Core/Route'
 
 // AUTH

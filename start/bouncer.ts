@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-nocheck
 /**
  * Contract source: https://git.io/Jte3T
  *
