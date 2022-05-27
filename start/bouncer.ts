@@ -1,4 +1,5 @@
 // @ts-nocheck
+//--ignore-ts-errors
 /**
  * Contract source: https://git.io/Jte3T
  *
@@ -63,4 +64,4 @@ export const { actions } = Bouncer
 | NOTE: Always export the "policies" const from this file
 |****************************************************************
 */
-export const { policies } = Bouncer.registerPolicies({})
+
